@@ -1,86 +1,73 @@
-import sqlite3
+from bases import *
 
-class Base_de_datos():
+class Logica():
 
-	
+
 	error=0
-	cocktails=sqlite3.connect("Cocteles")
-	cursor=cocktails.cursor()
-
 
 	def __init__(self):
 
-		cocktails=sqlite3.connect("Cocteles")
-
-		try:
-
-			self.cursor.execute("""
-				CREATE TABLE COCTELES (
-				ID INTEGER PRIMARY KEY AUTOINCREMENT,
-				COCKTAIL VARCHAR(20),
-				INGREDIENTES VARCHAR(100))
-				""")
-
-		except:
-			sqlite3.OperationalError
+		base=Base_de_datos()
 
 	def add_cocktail(self,cocktail):
-		
-			
-		self.cursor.execute("SELECT * FROM COCTELES")
-		datos=self.cursor.fetchall()
-			
+
+		datos=base.seeAll()
 
 		for registro in datos:
 
 			if registro[1]==cocktail[0]:
 
 				self.error=1
-					
+
 		if self.error==0:
-				
-			self.cursor.execute("INSERT INTO COCTELES VALUES (NULL,?,?)",cocktail)
-			self.cocktails.commit()
-				#self.cocktails.close()
+
+			base.add_cocktail()
 
 
 
 	def remove_cocktail(self,cocktail):
 
-		orden="DELETE FROM COCTELES WHERE COCKTAIL='"+cocktail+"'"
-		print(orden)
-		self.cursor.execute(orden)
-		self.cocktails.commit()
-		
+		datos=base.seeAll()
+		self.error=1
+
+		for registro in datos:
+
+			if registro[1]==cocktail[0]:
+
+				self.error=0
+
+		if self.error==0:
+
+			base.remove_cocktail()
+
 
 	def seeAll(self):
 
-		self.cursor.execute("SELECT COCKTAIL FROM COCTELES")
-		cocktails=self.cursor.fetchall()
+		cocktails=base.seeAll()
 		resultado=""
 
 		for cocktail in cocktails:
-			
+
 			resultado=resultado +"\n" + cocktail[0]
 
 		return resultado
 
-		
+
 
 	def filtro(self,ingredientes_disponibles):
-		
-		self.cursor.execute("SELECT * FROM COCTELES")
-		cocktails=self.cursor.fetchall()
-		
+
+
+		cocktails=base.seeAll()
+
 		ingredientes_disponibles=ingredientes_disponibles.split()
 		resultado=""
-		
+
 
 
 		for cocktail in cocktails:
 
 			ingredientes_necesarios=cocktail[2].split()
-			
+
 			count_needed=0
 			count=0
 
@@ -96,16 +83,10 @@ class Base_de_datos():
 						count=count+1
 
 
-				
+
 			if count_needed==count:
 
 				resultado=resultado +"\n" + cocktail[1]
 
-		
+
 		return resultado
-
-
-
-
-
-
