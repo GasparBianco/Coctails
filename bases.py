@@ -18,23 +18,25 @@ class Base_de_datos():
 				INGREDIENTES VARCHAR(100))
 				""")
 
-		except:
-			sqlite3.OperationalError
+        except:
 
-        def add_cocktail(self,cocktail):
+		          sqlite3.OperationalError
 
-            self.cursor.execute("INSERT INTO COCTELES VALUES (NULL,?,?)",cocktail)
-			self.cocktails.commit()
+    def add_cocktail(self,cocktail):
 
-        def remove_cocktail(self,cocktail):
+        self.cursor.execute("INSERT INTO COCTELES VALUES (NULL,?,?)",cocktail)
+        self.cocktails.commit()
 
-        	orden="DELETE FROM COCTELES WHERE COCKTAIL='"+cocktail+"'"
-        	self.cursor.execute(orden)
-    		self.cocktails.commit()
+    def remove_cocktail(self,cocktail):
 
-    	def seeAll(self):
+        orden="DELETE FROM COCTELES WHERE COCKTAIL='"+cocktail+"'"
+        self.cursor.execute(orden)
+        self.cocktails.commit()
 
-    		self.cursor.execute("SELECT * FROM COCTELES")
-    		cocktails=self.cursor.fetchall()
+    def seeAll(self):
 
-            return cocktails
+        self.cursor.execute("SELECT *FROM COCTELES")
+
+        return self.cursor.fetchall()
+
+#asdad

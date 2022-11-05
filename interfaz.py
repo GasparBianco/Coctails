@@ -206,7 +206,7 @@ class Interfaz():
 
 	def result(self):
 
-		self.resultados=base.filtro(self.ingredientes_str)
+		self.resultados=logica.filtro(self.ingredientes_str)
 		self.resultados_label.config(text=self.resultados)
 
 
@@ -215,11 +215,11 @@ class Interfaz():
 
 		cocktail=[nombre,ingredientes]
 
-		base.add_cocktail(cocktail)
+		logica.add_cocktail(cocktail)
 		self.agregar_string.set("")
 		#agregar_texto.config(textvariable=agregar_string)
 
-		if base.error==1:
+		if logica.error==1:
 
 			messagebox.showinfo("Error", "Ya hay un cocktail con ese nombre")
 
@@ -227,16 +227,22 @@ class Interfaz():
 
 	def see(self):
 
-		self.resultados=base.seeAll()
+		self.resultados=logica.seeAll()
 		self.resultados_label.config(text=self.resultados)
 
 	def remove_cocktail(self,cocktail):
 
 		base.remove_cocktail(cocktail)
-		self.agregar_string.set("")
+
+		if logica.error == 0:
+
+			self.agregar_string.set("")
+
+		else:
+
+			messagebox.showinfo("Error","No existe un cocktail con ese nombre en la base de datos")
 
 
 
-
-base=Base_de_datos()
+logica=Logica()
 ventana=Interfaz()

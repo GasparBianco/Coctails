@@ -7,11 +7,11 @@ class Logica():
 
 	def __init__(self):
 
-		base=Base_de_datos()
+		self.base=Base_de_datos()
 
 	def add_cocktail(self,cocktail):
 
-		datos=base.seeAll()
+		datos=self.base.seeAll()
 
 		for registro in datos:
 
@@ -21,13 +21,13 @@ class Logica():
 
 		if self.error==0:
 
-			base.add_cocktail()
+			self.base.add_cocktail(cocktail)
 
 
 
 	def remove_cocktail(self,cocktail):
 
-		datos=base.seeAll()
+		datos=self.base.seeAll()
 		self.error=1
 
 		for registro in datos:
@@ -38,12 +38,12 @@ class Logica():
 
 		if self.error==0:
 
-			base.remove_cocktail()
+			self.base.remove_cocktail(cocktail)
 
 
 	def seeAll(self):
 
-		cocktails=base.seeAll()
+		cocktails=self.base.seeAll()
 		resultado=""
 
 		for cocktail in cocktails:
@@ -57,7 +57,7 @@ class Logica():
 	def filtro(self,ingredientes_disponibles):
 
 
-		cocktails=base.seeAll()
+		cocktails=self.base.seeAll()
 
 		ingredientes_disponibles=ingredientes_disponibles.split()
 		resultado=""
