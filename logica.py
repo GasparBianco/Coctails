@@ -1,6 +1,6 @@
 from bases import *
 
-class Logica():
+class call_database():
 
 
 	error=0
@@ -11,58 +11,35 @@ class Logica():
 
 	def add_cocktail(self,cocktail):
 
-		datos=self.base.seeAll()
-
-		for registro in datos:
-
-			if registro[1]==cocktail[0]:
-
-				self.error=1
-
-		if self.error==0:
-
 			self.base.add_cocktail(cocktail)
 
 
 
 	def remove_cocktail(self,cocktail):
 
-		datos=self.base.seeAll()
-		self.error=1
-
-		for registro in datos:
-
-			if registro[1]==cocktail[0]:
-
-				self.error=0
-
-		if self.error==0:
-
-			self.base.remove_cocktail(cocktail)
+			orden="DELETE FROM COCTELES WHERE COCKTAIL='"+cocktail+"'"
+			self.cursor.execute(orden)
+			self.cocktails.commit()
 
 
 	def seeAll(self):
 
 		cocktails=self.base.seeAll()
-		resultado=""
-
-		for cocktail in cocktails:
-
-			resultado=resultado +"\n" + cocktail[0]
-
-		return resultado
+		return cocktails
 
 
+
+class logic():
+
+	base=Base_de_datos()
+	error=0
 
 	def filtro(self,ingredientes_disponibles):
-
 
 		cocktails=self.base.seeAll()
 
 		ingredientes_disponibles=ingredientes_disponibles.split()
 		resultado=""
-
-
 
 		for cocktail in cocktails:
 
@@ -90,3 +67,45 @@ class Logica():
 
 
 		return resultado
+
+	def seeAll(self):
+
+		cocktails=self.base.seeAll()
+		resultado=""
+
+		for cocktail in cocktails:
+
+			resultado=resultado +"\n" + cocktail[0]
+
+		return resultado
+
+
+
+	def remove(self,cocktail):
+
+		datos=self.base.seeAll()
+		self.error=1
+
+		for registro in datos:
+
+			if registro[1]==cocktail:
+
+				self.error=0
+
+		if self.error==0:
+
+			self.base.remove_cocktail(cocktail)
+
+	def add(self,cocktail):
+
+		datos=self.base.seeAll()
+
+		for registro in datos:
+
+			if registro[1]==cocktail:
+
+				self.error=1
+
+		if self.error==0:
+
+			self.base.add_cocktail(cocktail)

@@ -7,6 +7,9 @@ class Interfaz():
 
 	root=Tk()
 
+	logica=logic()
+	base=call_database()
+
 
 	ingredientes_str=""
 	resultados=""
@@ -57,29 +60,48 @@ class Interfaz():
 
 		#-------------------------------bebidas-------------------
 
-		Checkbutton(spirits_frame, text="Whisky escoces",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.whisky_escoces, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Whisky Bourbon",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.whisky_bourbon, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Vodka",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.vodka, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Gin",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.gin, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Tequila",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.tequila, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Ron dorado",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.ron_dorado, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Ron Blanco",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.ron_blanco, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Fernet",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.fernet, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Campari",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.campari, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Aperol",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.aperol, command=self.ingredientes).pack()
-		Checkbutton(spirits_frame, text="Vermuth Rosso",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.vermuth_rosso, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Whisky escoces",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.whisky_escoces, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Whisky Bourbon",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.whisky_bourbon, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Vodka",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.vodka, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Gin",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.gin, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Tequila",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.tequila, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Ron dorado",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.ron_dorado, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Ron Blanco",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.ron_blanco, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Fernet",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.fernet, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Campari",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.campari, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Aperol",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.aperol, command=self.ingredientes).pack()
+		Checkbutton(spirits_frame, text="Vermuth Rosso",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.vermuth_rosso, command=self.ingredientes).pack()
 
 
 
-		Checkbutton(extras_frame, text="Almibar",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.almibar, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Almibar de miel",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.almibar_miel, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Jugo de limon",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.jugo_limon, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Jengibre",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.jengibre, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Menta",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.menta, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Coca Cola",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.coca, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Almibar",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.almibar, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Almibar de miel",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.almibar_miel, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Jugo de limon",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.jugo_limon, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Jengibre",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.jengibre, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Menta",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.menta, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Coca Cola",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.coca, command=self.ingredientes).pack()
 		Checkbutton(extras_frame, text="Agua tonica",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.agua_tonica, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Lima",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.lima, command=self.ingredientes).pack()
-		Checkbutton(extras_frame, text="Soda",anchor="w",width=30, onvalue=True, offvalue=False, variable=self.soda, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Lima",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.lima, command=self.ingredientes).pack()
+		Checkbutton(extras_frame, text="Soda",anchor="w",width=30, onvalue=True, offvalue=False,
+		variable=self.soda, command=self.ingredientes).pack()
 
 
 		#-------------Botones------------------
@@ -206,7 +228,7 @@ class Interfaz():
 
 	def result(self):
 
-		self.resultados=logica.filtro(self.ingredientes_str)
+		self.resultados=self.logica.filtro(self.ingredientes_str)
 		self.resultados_label.config(text=self.resultados)
 
 
@@ -215,28 +237,32 @@ class Interfaz():
 
 		cocktail=[nombre,ingredientes]
 
-		logica.add_cocktail(cocktail)
+		self.logica.add(cocktail)
 		self.agregar_string.set("")
-		#agregar_texto.config(textvariable=agregar_string)
 
-		if logica.error==1:
+		if self.logica.error==1:
 
 			messagebox.showinfo("Error", "Ya hay un cocktail con ese nombre")
+
+		if self.logica.error==0:
+
+			messagebox.showinfo("","el cocktail se ha agregado con exito" )
 
 
 
 	def see(self):
 
-		self.resultados=logica.seeAll()
+		self.resultados=self.logica.seeAll()
 		self.resultados_label.config(text=self.resultados)
 
 	def remove_cocktail(self,cocktail):
 
-		base.remove_cocktail(cocktail)
+		self.logica.remove(cocktail)
 
-		if logica.error == 0:
+		if self.logica.error == 0:
 
 			self.agregar_string.set("")
+			messagebox.showinfo("","El cocktail ha sido removido con exito")
 
 		else:
 
@@ -244,5 +270,4 @@ class Interfaz():
 
 
 
-logica=Logica()
 ventana=Interfaz()
