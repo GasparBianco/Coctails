@@ -33,15 +33,17 @@ class logic():
 
 	base=Base_de_datos()
 	error=0
+	ingredientes_array=[]
 
 	def filtro(self,ingredientes_disponibles):
 
 		cocktails=self.base.seeAll()
 
-		ingredientes_disponibles=ingredientes_disponibles.split()
+		#ingredientes_disponibles=ingredientes_disponibles.split()
 		resultado=""
 
 		for cocktail in cocktails:
+
 
 			ingredientes_necesarios=cocktail[2].split()
 
@@ -75,7 +77,7 @@ class logic():
 
 		for cocktail in cocktails:
 
-			resultado=resultado +"\n" + cocktail[0]
+			resultado=resultado +"\n" + cocktail[1]
 
 		return resultado
 
@@ -98,14 +100,47 @@ class logic():
 
 	def add(self,cocktail):
 
+		self.create_ingredientes_str(cocktail[1])
+		cocktail[1]=self.ingredientes_str
 		datos=self.base.seeAll()
+
+		if not type(cocktail[1])==str:
+
+			self.error=2
 
 		for registro in datos:
 
-			if registro[1]==cocktail:
+
+			if registro[1]==cocktail[0]:
 
 				self.error=1
+
+			elif len(cocktail[0])==0:
+
+				self.error=3
+
 
 		if self.error==0:
 
 			self.base.add_cocktail(cocktail)
+		
+
+	def create_ingredientes_array(self,ingrediente):
+
+
+
+		if ingrediente in self.ingredientes_array:
+
+			self.ingredientes_array.remove(ingrediente)
+
+		else:
+
+			self.ingredientes_array.append(ingrediente)
+
+	def create_ingredientes_str(self,ingredientes_array):
+
+		self.ingredientes_str=""
+
+		for ingrediente in ingredientes_array:
+			ingrediente=ingrediente + " "
+			self.ingredientes_str=self.ingredientes_str + ingrediente
