@@ -38,5 +38,3 @@ class Base_de_datos():
         self.cursor.execute("SELECT *FROM COCTELES")
 
         return self.cursor.fetchall()
-
-#asdad

@@ -144,3 +144,9 @@ class logic():
 		for ingrediente in ingredientes_array:
 			ingrediente=ingrediente + " "
 			self.ingredientes_str=self.ingredientes_str + ingrediente
+
+
+
+
+
+
