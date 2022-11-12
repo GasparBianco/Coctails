@@ -17,10 +17,7 @@ class call_database():
 
 	def remove_cocktail(self,cocktail):
 
-			orden="DELETE FROM COCTELES WHERE COCKTAIL='"+cocktail+"'"
-			self.cursor.execute(orden)
-			self.cocktails.commit()
-
+			self.base.remove_cocktail(cocktail)
 
 	def seeAll(self):
 
@@ -31,7 +28,7 @@ class call_database():
 
 class logic():
 
-	base=Base_de_datos()
+	base=call_database()
 	error=0
 	ingredientes_array=[]
 
@@ -99,12 +96,13 @@ class logic():
 			self.base.remove_cocktail(cocktail)
 
 	def add(self,cocktail):
-
+		
+		self.error=0
 		self.create_ingredientes_str(cocktail[1])
 		cocktail[1]=self.ingredientes_str
 		datos=self.base.seeAll()
 
-		if not type(cocktail[1])==str:
+		if not type(cocktail[1])==str or len(cocktail[1])==0:
 
 			self.error=2
 
