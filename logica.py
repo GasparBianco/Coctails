@@ -106,17 +106,16 @@ class logic():
 
 			self.error=2
 
+		elif len(cocktail[0])==0:
+
+			self.error=3
+
 		for registro in datos:
 
 
 			if registro[1]==cocktail[0]:
 
 				self.error=1
-
-			elif len(cocktail[0])==0:
-
-				self.error=3
-
 
 		if self.error==0:
 
